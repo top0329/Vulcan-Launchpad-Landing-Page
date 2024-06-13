@@ -37,7 +37,7 @@ const ContributeToICO = () => {
         CONTRIBUTE <span className="text-[#1B96D1]">TO ICO</span>
       </h1>
       <p className="text-[15px] text-center px-2 max-w-[860px] mt-3 mx-auto">
-        Investing in promising blockchain projects is easy with Vulcan Pad. Here's how you can contribute:
+        Investing in promising blockchain projects is easy with Vulcan Pad. Here&apos;s how you can contribute:
       </p>
       <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-5 mt-10'>
         {
