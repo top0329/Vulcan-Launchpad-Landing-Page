@@ -11,7 +11,8 @@ import Evangilists from "@/components/evangilists";
 import Accreditors from "@/components/accreditors";
 import ContactUS from "@/components/contactUS";
 import Footer from "@/components/footer";
-// import ReactPlayer from 'react-player'
+import dynamic from "next/dynamic";
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 interface IFeature {
   title: string;
@@ -43,12 +44,12 @@ const features = [
   {
     title: "Unique Fee Structure",
     description:
-      "A 5% fee distributed among CryptoSI DAODAO, contributors, and registrars benefits multiple stakeholders.",
+      "A 5% fee distributed among CryptoSI DAO (2.5%), Contribution partners (1.5%) and listing partners (1%).",
   },
   {
     title: "Future-Ready",
     description:
-      "Continuous updates and new features to adapt to the evolving blockchain landscape.",
+      "Continuous updates and new features to adapt to the evolving blockchain and regulatory landscape.",
   },
 ];
 
@@ -60,29 +61,25 @@ const roadMaps: IRoadMapItem[] = [
 ]
 
 const faqs = [
-  { title: <>What is Turbo Trades?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>, description: "Turbo Trades is a cutting-edge DeFi platform designed to offer seamless wallet connectivity, efficient swapping, and liquidity management for both Maya and Thorchain users. It stands out for its user-friendly interface and robust security measures." },
-  { title: <>How do I connect my wallet to Turbo Trades?</>, description: "Connecting your wallet to Turbo Trades is straightforward. We're also excited to announce that a full suite of video tutorials will be coming soon to guide you through the process smoothly." },
-  { title: <>Which cryptocurrencies can I trade on Turbo Trades?</>, description: "At the moment, Maya Protocol supports trading with native Bitcoin (BTC), Ethereum (ETH, USDT, USDC & wstETH), THORChain (RUNE), Dash (DASH), and Kujira (KUJI & USK)." },
-  { title: <>Are there any fees associated with trading on Turbo Trades?</>, description: "Yes, there is a flat trading fee of 0.75% plus any network fees incurred during the transaction. These fees will be clearly displayed at the time of swapping." },
-  { title: <>How does Turbo Trades ensure the security of my investments?</>, description: "Turbo Trades operates on the Maya Protocol, which is battle-tested and has undergone thorough code audits to ensure the highest security standards for your investments." },
-  { title: <>Can I trade on Turbo Trades from any country?</>, description: "Turbo Trades aims to be accessible globally; however, users are advised to check their local regulations to ensure they can legally use the platform's services in their jurisdiction." },
+  { title: <>What is Vulcan Pad ?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>, description: "A decentralised ICO platform with revolutionary regulation supporting features." },
+  { title: <>Is it legal to launch my own ICO ?</>, description: "This depends on your jurisdiction, please seek legal advice" },
+  { title: <>Is it legal to contribute to an ICO?</>, description: "This depends on your jurisdiction, please seek legal advice" },
+  { title: <>What is the fee structure?</>, description: "5% of all tokens raised will be split between CryptoSI DAO (2.5%) listing partners (1%) and contribution partners (2.5%)" },
+  { title: <>When will I receive my tokens?</>, description: "You will receive your tokens when the ICO has completed IF the softcap was reached. Reaching the hardcap will complete an ICO immediately." },
+  { title: <>What is CryptoSI DAO?</>, description: "A revolutionary venture DAO building Dapps for a prosperous future." },
 ]
 
 const services = [
-  { image: '/imgs/new-ico.png', title: 'ICO Launch', description: 'Seamlessly create and launch your ICO, complete with all necessary tools and support' },
-  { image: '/imgs/new-ico.png', title: 'Investment Opportunities', description: 'Browse and invest in a variety of ICOs, each offering unique and innovative projects' },
-  { image: '/imgs/new-ico.png', title: 'Support and Guidance', description: 'Access resources and support from our team and community to help you succeed' },
-  { image: '/imgs/new-ico.png', title: 'Wallet Integration', description: 'Easy integration with popular crypto wallets for smooth transactions' },
+  { image: '/imgs/new-ico.png', title: 'ICO Launch', description: 'Seamlessly create and launch your ICO, complete with all necessary tools and support', discord: false },
+  { image: '/imgs/new-ico.png', title: 'Contribution opportunities', description: 'Browse and contribute to a variety of ICOs, each offering unique and innovative projects', discord: false },
+  { image: '/imgs/new-ico.png', title: 'Support and Guidance', description: 'Access resources and support from our team and community to help you succeed', discord: true },
+  { image: '/imgs/new-ico.png', title: 'Wallet Integration', description: 'Easy integration with popular crypto wallets for smooth transactions', discord: false },
 ]
 
 export default function Home() {
   const [feature, setFeature] = React.useState<string>("User-Friendly Interface");
-  const [showCoolDown, setShowCoolDown] = React.useState<boolean>(false);
-  const [isLoading, setIsLoading] = React.useState<boolean>(true);
-  const [start, setStart] = React.useState<boolean>(false);
-
-  const video = React.useRef(null);
-
+  const [startIntro, setStartIntro] = React.useState<boolean>(false);
+  const [startShortVideo, setStartShortVideo] = React.useState<boolean>(false);
 
   const _renderFeatureItem = (
     { title, description }: IFeature,
@@ -125,7 +122,7 @@ export default function Home() {
     </div>
   );
 
-  const _renderServiceItem = ({ image, title, description }: { image: string, title: string, description: string }) => (
+  const _renderServiceItem = ({ image, title, description, discord }: { image: string, title: string, description: string, discord: boolean }) => (
     <div key={title} className="relative w-full h-full">
       <div className="absolute right-1 top-1 -z-10 w-20 h-20 rounded-2xl bg-[#ec4040]"></div>
       <div className="w-full flex flex-col rounded-2xl h-full clip bg-[#342E52] px-6 py-10 rounded-tr-[55px] border-b border-white]">
@@ -145,7 +142,7 @@ export default function Home() {
             {description}
           </h2>
           <div className="flex justify-between mt-6">
-            <span>Learn more</span>
+            { discord ? <a href="https://discord.gg/G3qFyvYuBt">Join our discord</a> : <a>Learn more</a> }
             <Image
               className="cursor-pointer"
               src="/arrow.svg"
@@ -171,14 +168,9 @@ export default function Home() {
     </div>
   )
 
-  const handlePlay = () => {
-
-  }
-
   return (
     <>
       <Header />
-      <CoolDownModal showCoolDown={showCoolDown} setShowCoolDown={setShowCoolDown} />
       <div className="relative">
         <div className="absolute t-0 w-full -z-50 h-full bg-[#0D0A1C]">
           <div className="w-full h-full bg-[url('/bg-tile.svg')] opacity-[0.05] flex justify-center"></div>
@@ -192,36 +184,46 @@ export default function Home() {
             Your gateway to launching and investing in innovative blockchain projects.
           </p>
           <p className="text-[15px] text-center px-2 max-w-[860px]">
-            Our platform provides a secure, transparent and efficient environment for Initial Coin Offerings (ICOs) on the Arbitrum Network, empowering creators and investors to bring new ideas to life.
+            Our platform provides a secure, transparent and efficient environment for Initial Coin Offerings (ICOs) on the Arbitrum, base and BNB Networks, empowering creators and investors to bring new ideas to life.
           </p>
 
           <div className="flex justify-center w-full gap-3">
-            <button onClick={() => window.open('https://app.turbotrade.tech/liquidity/')} className="flex justify-center items-center gap-3 text-white mt-7 px-6 text-sm py-4 rounded-xl bg-gradient-to-r from-[#00D7E1] to-[#2B6EC8] hover:from-[#ff6702de] hover:to-[#ee0e739f]">
+            {/* <button onClick={() => window.open('https://app.turbotrade.tech/liquidity/')} className="flex justify-center items-center gap-3 text-white mt-7 px-6 text-sm py-4 rounded-xl bg-gradient-to-r from-[#00D7E1] to-[#2B6EC8] hover:from-[#ff6702de] hover:to-[#ee0e739f]">
               Subscribe today <Icon icon="pajamas:long-arrow" />
-            </button>
-            <button className="flex justify-center items-center gap-3 text-white mt-7 px-6 text-sm py-4 rounded-xl bg-transparent border border-[#00D7E1]">
+            </button> */}
+            <button onClick={() => window.open('https://app.vulcanpad.tech/', '_blank')} className="flex justify-center items-center gap-3 text-white mt-7 px-6 text-sm py-4 rounded-xl bg-transparent border border-[#00D7E1]">
               Request a demo <Icon icon="pajamas:long-arrow" />
             </button>
           </div>
 
           <div className="w-full mt-20">
-            <div className="w-full uppercase text-center border-2 bg-[#2285CE] border-[#a56bec86] pt-4 rounded-t-2xl p-2 flex justify-center items-center">
+            <div className="w-full text-center border-2 bg-[#2285CE] border-[#a56bec86] pt-4 rounded-t-2xl p-2 flex justify-center items-center">
               Watch this short video to learn more about how Vulcan Pad can help you create and invest in ICOs with ease. Discover the features,
               benefits, and unique aspects of our platform.
             </div>
             <div className="w-full border-2 border-[#a56bec86] bg-[#ffffff31] pt-4 rounded-b-2xl">
               <div className="aspect-video rounded-b-2xl w-full h-full flex justify-center items-center bg-black">
-                <div className="w-full h-full relative">
-                  <Image
-                    src="/imgs/thumbnail.png"
-                    width={0}
-                    alt=""
-                    height={0}
-                    sizes="100vw"
-                    className="w-auto h-full rounded-b-2xl"
-                  />
-                  <Icon onClick={handlePlay} width={100} icon="material-symbols-light:smart-display-outline-rounded" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:opacity-60" />
-                </div>
+                {
+                  startIntro ?
+                    <ReactPlayer
+                      controls
+                      className="react-player rounded-[19px]"
+                      url='https://youtu.be/OATeH6CaA28'
+                      width="100%"
+                      height="100%"
+                    /> :
+                    <div className="w-full h-full relative">
+                      <Image
+                        src="/imgs/thumbnail.png"
+                        width={0}
+                        alt=""
+                        height={0}
+                        sizes="100vw"
+                        className="w-auto h-full rounded-b-2xl"
+                      />
+                      <Icon onClick={() => setStartIntro(true)} width={100} icon="material-symbols-light:smart-display-outline-rounded" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:opacity-60" />
+                    </div>
+                }
               </div>
             </div>
             <div className="bg-[#443A73] w-[95%] h-5 mx-auto rounded-b-full"></div>
@@ -239,13 +241,13 @@ export default function Home() {
 
           <h1 className="text-4xl font-bold mt-20">Our Services</h1>
           <div className="grid md:grid-cols-2 gap-3 grid-cols-1 mt-5">
-            { services.map((item => _renderServiceItem(item))) }
+            {services.map((item => _renderServiceItem(item)))}
           </div>
 
           <h1 className="text-4xl font-bold mt-20 text-center">
             Watch this short video to learn more about how Vulcan Pad
           </h1>
-          <div className="w-full mt-5 p-8 rounded-xl border-2 bg-gradient-to-r from-[#ffffff4d] to-[#ffffff09] border-[#ffffff3b]">
+          <div className="w-full mt-5 p-2 md:p-8 rounded-xl border-2 bg-gradient-to-r from-[#ffffff4d] to-[#ffffff09] border-[#ffffff3b]">
             <div className="flex gap-3">
               <div className="flex items-center">
                 <div className="w-6">
@@ -266,14 +268,31 @@ export default function Home() {
                 https://www.vulcanpad.com/
               </div>
             </div>
-            <Image
-              src="/imgs/new-ico.png"
-              width={0}
-              alt=""
-              height={0}
-              sizes="100vw"
-              className="w-auto rounded-lg mt-3"
-            />
+            <div className="react-player mt-2 relative">
+              {
+                startShortVideo ?
+                  <div className="w-full h-full aspect-video bg-blue-950 rounded-2xl">
+                    <ReactPlayer
+                      controls
+                      className="react-player"
+                      url='https://youtu.be/KVhBumfWDWE'
+                      width="100%"
+                      height="100%"
+                    />
+                  </div> :
+                  <div className="w-full h-full">
+                    <Image
+                      src="/imgs/dao-thumbnail.png"
+                      width={0}
+                      alt=""
+                      height={0}
+                      sizes="100vw"
+                      className="w-auto h-full rounded-2xl"
+                    />
+                    <Icon onClick={() => setStartShortVideo(true)} width={100} icon="material-symbols-light:smart-display-outline-rounded" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:opacity-60" />
+                  </div>
+              }
+            </div>
           </div>
 
           <h2 className="text-lg text-[#14A5D5] mt-20">Advantages of our company</h2>
@@ -286,12 +305,12 @@ export default function Home() {
             </div>
           </div>
 
-          <CreateYourICO/>
-          <ContributeToICO/>
-          <Evangilists/>
-          <Accreditors/>
+          <CreateYourICO />
+          <ContributeToICO />
+          <Evangilists />
+          <Accreditors />
 
-          <div className="rounded-2xl p-[1px] bg-gradient-to-tr from-[#ff6a0096] via-[#6d78b280] to-[#e02d6f86] mt-20 w-full shadow-[15px_15px_3px_black]">
+          {/* <div className="rounded-2xl p-[1px] bg-gradient-to-tr from-[#ff6a0096] via-[#6d78b280] to-[#e02d6f86] mt-20 w-full shadow-[15px_15px_3px_black]">
             <div className="rounded-2xl p-8 bg-[#120D28] dark:bg-[##120D28] dark:text-white grid lg:grid-cols-[60%_40%] grid-cols-1 gap-5 items-center">
               <Image
                 src="/add-lp.png"
@@ -369,16 +388,16 @@ export default function Home() {
                 className="w-auto rounded-md aspect-video"
               />
             </div>
-          </div>
+          </div> */}
 
-          <h1 className="text-4xl font-bold mt-24 text-center">Frequently <span className="text-red-600">Asked</span> Questions</h1>
+          {/* <h1 className="text-4xl font-bold mt-24 text-center">Frequently <span className="text-red-600">Asked</span> Questions</h1>
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 mt-10">
             {faqs.map((item: IFAQ) => _renderFAQ(item))}
           </div>
 
-          <ContactUS/>
+          <ContactUS />
 
-          <Footer/>
+          <Footer /> */}
         </div>
       </div>
     </>

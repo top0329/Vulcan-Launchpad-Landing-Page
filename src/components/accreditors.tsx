@@ -9,7 +9,8 @@ type ITEM = {
 
 const items: ITEM[] = [
   { image: '/imgs/accreditors/validate.svg', title: 'Validate Projects', description: 'Ensure the legitimacy and credibility of ICOs listed on our platform' },
-  { image: '/imgs/accreditors/enhance.svg', title: 'Enhance Security', description: 'Contribute to a secure environment by vetting projects and protecting investors' },
+  { image: '/imgs/accreditors/enhance.svg', title: 'Validate Contributors', description: 'Ensure that only certain people can invest in certain ICOs, adhering to regulation' },
+  { image: '/imgs/accreditors/validate.svg', title: 'Enhance Security', description: 'Contribute to a secure environment by vetting projects and protecting investors' },
   { image: '/imgs/accreditors/earn.svg', title: 'Earn Recognition', description: 'Gain acknowledgment and rewards for your role in maintaining the integrity of our platform' },
 ]
 
@@ -33,12 +34,12 @@ const Accreditors = () => {
       <div className='mt-40 w-full text-left rounded-3xl p-[1px] border border-[#bfb2d4] via-[#241e49] to-[#16122F]'>
         <div className='w-full h-full p-6 rounded-3xl bg-[#0A0918]'>
           <h1 className="text-4xl font-bold font-dalek">
-            Accreditors
+            Accreditors – Coming Soon
           </h1>
           <p className="text-[15px] max-w-[860px] mt-3">
-            Become an accreditor on Vulcan Pad and help verify and authenticate ICO projects. As an accreditor, you can:
+            Become an accreditor on Vulcan Pad and help verify and authenticate ICO contributors. As an accreditor, you can:
           </p>
-          <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-x-3'>
+          <div className='w-full grid grid-cols-1 md:grid-cols-4 gap-x-3'>
             {
               items.map((item: ITEM, index: number) => _renderItem(item, index))
             }

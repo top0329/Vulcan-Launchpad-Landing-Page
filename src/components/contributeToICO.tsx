@@ -10,7 +10,7 @@ type ITEM = {
 const items: ITEM[] = [
   { image: '/imgs/contributes/browse.svg', title: 'Browse ICOs', description: 'Explore the list of ongoing ICOs on our platform' },
   { image: '/imgs/contributes/invest.svg', title: 'Select an ICO', description: 'Choose a project that interests you and click on it to view more details' },
-  { image: '/imgs/contributes/monitor.svg', title: 'Invest', description: 'Enter the amount you wish to invest, confirm the transaction in your wallet, and receive your tokens' },
+  { image: '/imgs/contributes/monitor.svg', title: 'Contribute', description: 'Enter the amount of eth you wish to contribute, confirm the transaction in your wallet, and if the ICO reaches its softcap you will receive your tokens' },
   { image: '/imgs/contributes/select.svg', title: 'Monitor Progress', description: 'Track the status of your investments and see how the projects you support are developing' },
 ]
 
@@ -37,7 +37,7 @@ const ContributeToICO = () => {
         CONTRIBUTE <span className="text-[#1B96D1]">TO ICO</span>
       </h1>
       <p className="text-[15px] text-center px-2 max-w-[860px] mt-3 mx-auto">
-        Investing in promising blockchain projects is easy with Vulcan Pad. Here&apos;s how you can contribute:
+        Contributing to promising blockchain projects is easy with Vulcan Pad. Here&apos;s how you can contribute:
       </p>
       <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-5 mt-10'>
         {

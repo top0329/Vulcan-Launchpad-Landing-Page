@@ -71,3 +71,11 @@ body {
   /* stroke-dasharray: 10!important; */
   opacity: 0.05;
 }
+
+video{
+  border-radius: 0px 0px 15px 15px;
+}
+
+.react-player video {
+  border-radius: 15px!important;
+}

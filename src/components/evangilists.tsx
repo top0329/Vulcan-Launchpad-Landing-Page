@@ -29,7 +29,7 @@ const Evangilists = () => {
   return (
     <div className='mt-20 w-full text-center'>
       <h1 className="text-4xl font-bold font-dalek  text-center">
-        EVANGILISTS
+        EVANGELISTS - Coming Soon
       </h1>
       <p className="text-[15px] text-center px-2 max-w-[860px] mt-3 mx-auto">
         Join our community of passionate evangelists who promote and support promising ICOs. As an evangelist, you can:

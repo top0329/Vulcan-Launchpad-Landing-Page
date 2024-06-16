@@ -42,7 +42,7 @@ const Header = () => {
         { navs.map((item: INav) => _renderNavItem (item)) }
       </div> */}
       <div className="flex gap-5 items-center">
-        <button onClick={() => window.open("https://app.turbotrade.tech")} className="text-[15px] py-2 px-4 text-white border border-white rounded-lg hover:opacity-55 rounded-tr-[15px]">
+        <button onClick={() => window.open("https://app.vulcanpad.tech/")} className="text-[15px] py-2 px-4 text-white border border-white rounded-lg hover:opacity-55 rounded-tr-[15px]">
           LAUNCH APP
         </button>
         {/* <Dropdown label=""  renderTrigger={() => <Icon icon="ph:list-fill" className="text-white text-2xl cursor-pointer hover:opacity-60 lg:hidden flex"/>}>

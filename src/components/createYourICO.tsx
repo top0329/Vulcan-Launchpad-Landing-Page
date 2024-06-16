@@ -19,12 +19,12 @@ const CreateYourICO = () => {
           <div className='w-full text-center flex flex-col items-center gap-3'>
             <h2 className='text-xl font-bold'>Enter <span className='text-blue-400'>Project Details</span></h2>
             <div className='w-10 h-[2px] bg-gradient-to-r from-blue-300 to-blue-700'></div>
-            <p>Provide your project name, description,<br/>token information, and upload a logo</p>
+            <p>Provide your project name, description, token information, social media, and upload a logo and a Video via youtube link </p>
           </div>
           <div className='w-full text-center flex flex-col items-center gap-3 md:border-r border-[#ffffff18]'>
             <h2 className='text-xl font-bold'>Set Campaign <span className='text-blue-400'>Parameters</span></h2>
             <div className='w-10 h-[2px] bg-gradient-to-r from-blue-300 to-blue-700'></div>
-            <p>Define the total supply, price per token, tokens to sell, market cap at launch, and campaign duration</p>
+            <p>Define the total sale amount, price per token, denominated in ETH or USD, and campaign duration.</p>
           </div>
           <div className='w-full text-center flex flex-col items-center gap-3'>
             <h2 className='text-xl font-bold'>Submit and <span className='text-blue-400'>Launch</span></h2>
