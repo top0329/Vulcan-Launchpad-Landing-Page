@@ -71,9 +71,9 @@ const faqs = [
 
 const services = [
   { image: '/imgs/new-ico.png', title: 'ICO Launch', description: 'Seamlessly create and launch your ICO, complete with all necessary tools and support', discord: false },
-  { image: '/imgs/new-ico.png', title: 'Contribution opportunities', description: 'Browse and contribute to a variety of ICOs, each offering unique and innovative projects', discord: false },
-  { image: '/imgs/new-ico.png', title: 'Support and Guidance', description: 'Access resources and support from our team and community to help you succeed', discord: true },
-  { image: '/imgs/new-ico.png', title: 'Wallet Integration', description: 'Easy integration with popular crypto wallets for smooth transactions', discord: false },
+  { image: '/imgs/ico-opporunities.png', title: 'Contribution opportunities', description: 'Browse and contribute to a variety of ICOs, each offering unique and innovative projects', discord: false },
+  { image: '/imgs/3.png', title: 'Support and Guidance', description: 'Access resources and support from our team and community to help you succeed', discord: true },
+  { image: '/imgs/wallet-integration.png', title: 'Wallet Integration', description: 'Easy integration with popular crypto wallets for smooth transactions', discord: false },
 ]
 
 export default function Home() {
