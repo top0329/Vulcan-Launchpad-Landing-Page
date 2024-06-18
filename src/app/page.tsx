@@ -44,7 +44,7 @@ const features = [
   {
     title: "Unique Fee Structure",
     description:
-      "A 5% fee distributed among CryptoSI DAO (2.5%), Contribution partners (1.5%) and listing partners (1%).",
+      "A 5% fee distributed among CryptoSI DAO (2.5%), Contribution partners (1.5%) and Listing partners (1%)",
   },
   {
     title: "Future-Ready",
@@ -142,7 +142,7 @@ export default function Home() {
             {description}
           </h2>
           <div className="flex justify-between mt-6">
-            { discord ? <a href="https://discord.gg/G3qFyvYuBt">Join our discord</a> : <a>Learn more</a> }
+            { discord ? <a href="https://discord.gg/G3qFyvYuBt">Join our discord</a> : '' }
             <Image
               className="cursor-pointer"
               src="/arrow.svg"
@@ -184,7 +184,7 @@ export default function Home() {
             Your gateway to launching and investing in innovative blockchain projects.
           </p>
           <p className="text-[15px] text-center px-2 max-w-[860px]">
-            Our platform provides a secure, transparent and efficient environment for Initial Coin Offerings (ICOs) on the Arbitrum, base and BNB Networks, empowering creators and investors to bring new ideas to life.
+            Our platform provides a secure, transparent and efficient environment for Initial Coin Offerings (ICOs) on the Arbitrum, Base and BNB Networks, empowering creators and investors to bring new ideas to life.
           </p>
 
           <div className="flex justify-center w-full gap-3">
@@ -192,14 +192,13 @@ export default function Home() {
               Subscribe today <Icon icon="pajamas:long-arrow" />
             </button> */}
             <button onClick={() => window.open('https://app.vulcanpad.tech/', '_blank')} className="flex justify-center items-center gap-3 text-white mt-7 px-6 text-sm py-4 rounded-xl bg-transparent border border-[#00D7E1]">
-              Request a demo <Icon icon="pajamas:long-arrow" />
+              Launch the App <Icon icon="pajamas:long-arrow" />
             </button>
           </div>
 
           <div className="w-full mt-20">
             <div className="w-full text-center border-2 bg-[#2285CE] border-[#a56bec86] pt-4 rounded-t-2xl p-2 flex justify-center items-center">
-              Watch this short video to learn more about how Vulcan Pad can help you create and invest in ICOs with ease. Discover the features,
-              benefits, and unique aspects of our platform.
+              Watch this short video to learn more about how Vulcan Pad was built in public.
             </div>
             <div className="w-full border-2 border-[#a56bec86] bg-[#ffffff31] pt-4 rounded-b-2xl">
               <div className="aspect-video rounded-b-2xl w-full h-full flex justify-center items-center bg-black">
@@ -265,7 +264,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="bg-white text-left flex items-center p-3 rounded-xl text-[#8993AE] w-full text-[15px] truncate">
-                https://www.vulcanpad.com/
+                https://vulcanpad.tech
               </div>
             </div>
             <div className="react-player mt-2 relative">
@@ -390,14 +389,14 @@ export default function Home() {
             </div>
           </div> */}
 
-          {/* <h1 className="text-4xl font-bold mt-24 text-center">Frequently <span className="text-red-600">Asked</span> Questions</h1>
+          <h1 className="text-4xl font-bold mt-24 text-center">Frequently <span className="text-red-600">Asked</span> Questions</h1>
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 mt-10">
             {faqs.map((item: IFAQ) => _renderFAQ(item))}
           </div>
 
-          <ContactUS />
+          {/* <ContactUS />
 
-          <Footer /> */}
+          <Footer />  */}
         </div>
       </div>
     </>
